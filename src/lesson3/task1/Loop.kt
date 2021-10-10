@@ -289,23 +289,20 @@ fun squareSequenceDigit(n: Int): Int {
     var square = 1
     var fullLength = 0
     var temp = 1
-    for (i in 1..n) {
-        square *= square //1 4 9
-        var length = digitNumber(square) //1 1 1
-        fullLength += length //1 2 3
-        temp++ //2 3 4
-        square = temp //2 3 4
-
-        if (fullLength >= n) {
-            while (fullLength > n) {
-                square /= 10
-                fullLength--
-            }
-            return square % 10
-
-        }
+    var length = 0
+    while (fullLength < n) {
+        square = temp * temp
+        temp++
+        length = digitNumber(square)
+        fullLength += length
     }
-    return square
+
+    while (fullLength > n) {
+        square /= 10
+        fullLength--
+    }
+    return square % 10
+
 }
 
 /**
@@ -318,5 +315,21 @@ fun squareSequenceDigit(n: Int): Int {
  * Использовать операции со строками в этой задаче запрещается.
  */
 
-fun fibSequenceDigit(n: Int): Int = TODO()
+fun fibSequenceDigit(n: Int): Int {
+    var fibon = 1
+    var fullLength = 0
+    var temp = 1
+    var length = 0
+    while (fullLength < n) {
+        fibon = fib(temp)
+        temp++
+        length = digitNumber(fibon)
+        fullLength += length
+    }
 
+    while (fullLength > n) {
+        fibon /= 10
+        fullLength--
+    }
+    return fibon % 10
+}
