@@ -129,8 +129,8 @@ class Tests {
     @Tag("3")
     fun times() {
         assertEquals(0, times(listOf(), listOf()))
-        assertEquals(-5, times(listOf(1, -4), listOf(3, 2))) //4 2
-        assertEquals(-19, times(listOf(-1, 2, -3), listOf(3, -2, 4))) //2 0 1
+        assertEquals(-5, times(listOf(1, -4), listOf(3, 2)))
+        assertEquals(-19, times(listOf(-1, 2, -3), listOf(3, -2, 4)))
     }
 
     @Test

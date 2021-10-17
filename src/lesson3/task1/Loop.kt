@@ -196,14 +196,13 @@ fun isCoPrime(m: Int, n: Int): Boolean {
     var second = m
     while ((first != 0) && (second != 0)) {
         if (first > second) {
-            first = first - second
+            first -= second
         } else {
             second -= first
         }
     }
-    if (second == first)
-        return true
-    else return false
+    return (first + second == 1)
+
 }
 
 /**
@@ -234,10 +233,7 @@ fun revert(n: Int): Int {
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun isPalindrome(n: Int): Boolean {
-    if (revert(n) == n)
-        return true
-    else return false
-
+    return revert(n) == n
 }
 
 /**

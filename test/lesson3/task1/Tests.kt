@@ -184,11 +184,11 @@ class Tests {
     @Tag("3")
     fun hasDifferentDigits() {
         assertTrue(hasDifferentDigits(323))
-        //assertTrue(hasDifferentDigits(54))
-        //assertTrue(hasDifferentDigits(222266666))
-        //assertFalse(hasDifferentDigits(0))
-        //assertFalse(hasDifferentDigits(777))
-        //assertTrue(hasDifferentDigits(31122))
+        assertTrue(hasDifferentDigits(54))
+        assertTrue(hasDifferentDigits(222266666))
+        assertFalse(hasDifferentDigits(0))
+        assertFalse(hasDifferentDigits(777))
+        assertTrue(hasDifferentDigits(31122))
     }
 
     @Test
