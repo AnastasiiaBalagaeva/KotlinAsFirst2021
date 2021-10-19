@@ -153,7 +153,16 @@ fun mean(list: List<Double>): Double {
  *
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
-fun center(list: MutableList<Double>): MutableList<Double> = TODO()
+fun center(list: MutableList<Double>): MutableList<Double> {
+    val mid = mean(list)
+    if (list.isEmpty())
+        return list
+    else
+        for ((index, element) in list.withIndex()) {
+            list[index] = element - mid
+        }
+    return list
+}
 
 /**
  * Средняя (3 балла)
@@ -234,7 +243,7 @@ fun factorizeToString(n: Int): String {
     var list = factor.sorted()
 
 
-return list.joinToString(separator = "*")
+    return list.joinToString(separator = "*")
 }
 
 
