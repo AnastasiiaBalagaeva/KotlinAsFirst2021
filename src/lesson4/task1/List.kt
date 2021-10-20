@@ -305,12 +305,21 @@ fun roman(n: Int): String {
     val romNum = mutableListOf<String>()
 
     var partM = n / 1000
+    var remainder = n % 1000
     romNum.add("M".repeat(partM))
 
-    var remainder = n % 1000
-    if (remainder == 4) romNum.add("CD")
+
+    if (remainder / 100 == 4) romNum.add("CD")
+    if (remainder / 100 == 9) romNum.add("CM")
+
+
     var partD = remainder / 500
-    romNum.add("D".repeat(partD))
+    remainder = remainder % 500
+    if (remainder / 100 == 4) romNum.add("CD")
+    else if (remainder / 100 == 9) romNum.add("CM")
+    else romNum.add("D".repeat(partD))
+
+
 
     remainder -= 500 * partD
     if (remainder == 9) romNum.add("XC")
