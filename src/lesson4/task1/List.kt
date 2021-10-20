@@ -303,21 +303,30 @@ fun decimalFromString(str: String, base: Int): Int = TODO()
  */
 fun roman(n: Int): String {
     val romNum = mutableListOf<String>()
-    var partI: Int
-    var partX: Int
-    var partV: Int
-    var partL: Int
 
     var partM = n / 1000
     romNum.add("M".repeat(partM))
 
     var remainder = n % 1000
+    if (remainder == 4) romNum.add("CD")
     var partD = remainder / 500
-    if (remainder == 4) romNum.add("CM")
     romNum.add("D".repeat(partD))
 
     remainder -= 500 * partD
+    if (remainder == 9) romNum.add("XC")
+    if (remainder == 9) romNum.add("XL")
     var partC = remainder / 100
+    romNum.add("C".repeat(partC))
+
+    remainder -= 100 * partC
+    if (remainder == 9) romNum.add("IX")
+    if (remainder == 4) romNum.add("IV")
+    var partL = remainder / 50
+    romNum.add("L".repeat(partL))
+
+    var partL = remainder / 50
+
+
 
 }
 
