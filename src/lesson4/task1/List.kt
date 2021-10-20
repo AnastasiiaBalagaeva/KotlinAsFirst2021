@@ -307,14 +307,14 @@ fun roman(n: Int): String {
     var partX: Int
     var partV: Int
     var partL: Int
- 2645
-    var partM = n / 1000 //2
-    romNum.add()
 
-    var remainder = n % 1000 /645
-    var partD = remainder / 500 //1
+    var partM = n / 1000
+    romNum.add("M".repeat(partM))
+
+    var remainder = n % 1000
+    var partD = remainder / 500
     if (remainder == 4) romNum.add("CM")
-    romNum.add()
+    romNum.add("D".repeat(partD))
 
     remainder -= 500 * partD
     var partC = remainder / 100
