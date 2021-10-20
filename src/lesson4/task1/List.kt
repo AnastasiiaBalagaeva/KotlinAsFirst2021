@@ -311,8 +311,14 @@ fun roman(n: Int): String {
 
     if ((remainder / 500 == 1) && (remainder < 900))
         romNum.add("D")
-    if (remainder / 100 == 4) romNum.add("CD")
-    if (remainder / 100 == 9) romNum.add("CM")
+    if (remainder / 100 == 4) {
+        romNum.add("CD")
+        remainder = remainder % 400
+    }
+    if (remainder / 100 == 9) {
+        romNum.add("CM")
+        remainder = remainder % 900
+    }
     else if (remainder > 99) {
         var partC = remainder % 500
         romNum.add("C".repeat(partC))
