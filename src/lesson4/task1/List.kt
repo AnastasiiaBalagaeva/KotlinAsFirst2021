@@ -302,33 +302,30 @@ fun decimalFromString(str: String, base: Int): Int = TODO()
  * Например: 23 = XXIII, 44 = XLIV, 100 = C
  */
 fun roman(n: Int): String {
+
     val romNum = mutableListOf<String>()
 
     var partM = n / 1000
+    romNum.add("M".repeat(partM))
     var remainder = n % 1000
-    romNum.add("M".repeat(partM)) //1000
 
-    if (remainder / 100 == 9) // 900
-        romNum.add("CM")
-    if (remainder / 100 == 4) //400
-        romNum.add("CD")
-    if (remainder / 500 == 1) //500
+    if ((remainder / 500 == 1) && (remainder < 900))
         romNum.add("D")
+    if (remainder / 100 == 4) romNum.add("CD")
+    if (remainder / 100 == 9) romNum.add("CM")
     else {
-        var partC = remainder / 100
-        romNum.add("C".repeat(partC)) //100
+        var partC = remainder % 500
+        romNum.add("C".repeat(partC))
     }
     remainder = remainder % 100
 
-    if (remainder / 10 == 9) // 90
-        romNum.add("XC")
-    if (remainder / 10 == 4) //40
-        romNum.add("XL")
-    if (remainder / 50 == 1) //50
+    if ((remainder / 50 == 1) && (remainder < 90))
         romNum.add("L")
+    if (remainder / 10 == 4) romNum.add("XL")
+    if (remainder / 10 == 9) romNum.add("XC")
     else {
-        var partX = remainder / 10
-        romNum.add("C".repeat(partX)) //10
+        var partX = remainder % 50
+        romNum.add("X".repeat(partX))
     }
     remainder = remainder % 10
     when (remainder) {
@@ -343,9 +340,12 @@ fun roman(n: Int): String {
         1 -> romNum.add("I")
 
     }
-
-    return romNum
+    var z = romNum.joinToString()
+    var z1 = z.replace(",", "")
+    var z2 = z1.replace(" ","")
+    return z2
 }
+
 
 
 
