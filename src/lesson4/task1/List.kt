@@ -342,6 +342,7 @@ fun roman(n: Int): String {
         romNum.add("X".repeat(partX))
     }
     remainder = remainder % 10
+
     when (remainder) {
         9 -> romNum.add("IX")
         8 -> romNum.add("VIII")
@@ -352,8 +353,8 @@ fun roman(n: Int): String {
         3 -> romNum.add("III")
         2 -> romNum.add("II")
         1 -> romNum.add("I")
-
     }
+
     var z = romNum.joinToString()
     var z1 = z.replace(",", "")
     var z2 = z1.replace(" ", "")
