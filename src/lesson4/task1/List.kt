@@ -3,6 +3,7 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
+import java.util.logging.XMLFormatter
 import kotlin.math.sqrt
 
 // Урок 4: списки
@@ -228,7 +229,7 @@ fun factorize(n: Int): List<Int> {
  * Множители в результирующей строке должны располагаться по возрастанию.
  */
 fun factorizeToString(n: Int): String {
-    var max = 1
+    var max: Int
     var min = 1
     var m = n
     val factor = mutableListOf<Int>()
@@ -300,7 +301,25 @@ fun decimalFromString(str: String, base: Int): Int = TODO()
  * 90 = XC, 100 = C, 400 = CD, 500 = D, 900 = CM, 1000 = M.
  * Например: 23 = XXIII, 44 = XLIV, 100 = C
  */
-fun roman(n: Int): String = TODO()
+fun roman(n: Int): String {
+    val romNum = mutableListOf<String>()
+    var partI: Int
+    var partX: Int
+    var partV: Int
+    var partL: Int
+ 2645
+    var partM = n / 1000 //2
+    romNum.add()
+
+    var remainder = n % 1000 /645
+    var partD = remainder / 500 //1
+    if (remainder == 4) romNum.add("CM")
+    romNum.add()
+
+    remainder -= 500 * partD
+    var partC = remainder / 100
+
+}
 
 /**
  * Очень сложная (7 баллов)
