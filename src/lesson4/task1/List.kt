@@ -313,7 +313,7 @@ fun roman(n: Int): String {
         romNum.add("D")
     if (remainder / 100 == 4) romNum.add("CD")
     if (remainder / 100 == 9) romNum.add("CM")
-    else {
+    else if (remainder > 99) {
         var partC = remainder % 500
         romNum.add("C".repeat(partC))
     }
@@ -321,9 +321,14 @@ fun roman(n: Int): String {
 
     if ((remainder / 50 == 1) && (remainder < 90))
         romNum.add("L")
-    if (remainder / 10 == 4) romNum.add("XL")
-    if (remainder / 10 == 9) romNum.add("XC")
-    else {
+    if (remainder / 10 == 4) {
+        romNum.add("XL")
+        remainder = remainder % 40
+    }
+    if (remainder / 10 == 9) {
+        romNum.add("XC")
+        remainder = remainder % 90
+    } else if (remainder > 9) {
         var partX = remainder % 50
         romNum.add("X".repeat(partX))
     }
@@ -342,11 +347,9 @@ fun roman(n: Int): String {
     }
     var z = romNum.joinToString()
     var z1 = z.replace(",", "")
-    var z2 = z1.replace(" ","")
+    var z2 = z1.replace(" ", "")
     return z2
 }
-
-
 
 
 /**
