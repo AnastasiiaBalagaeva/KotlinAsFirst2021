@@ -127,7 +127,6 @@ fun abs(v: List<Double>): Double {
         sum += element * element
     }
     return sqrt(sum)
-
 }
 
 /**
