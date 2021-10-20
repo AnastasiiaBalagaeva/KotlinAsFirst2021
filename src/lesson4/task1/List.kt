@@ -306,28 +306,21 @@ fun roman(n: Int): String {
 
     var partM = n / 1000
     var remainder = n % 1000
-    romNum.add("M".repeat(partM))
+    romNum.add("M".repeat(partM)) //1000
 
-    var partD = remainder / 500
-    remainder = remainder % 500
-    if (remainder / 100 == 4) romNum.add("CD")
-    if (remainder / 100 == 9) romNum.add("CM")
-    else romNum.add("D".repeat(partD))
-
-    var partL = remainder / 50
-    remainder = remainder % 50
-    if (remainder / 10 == 4) romNum.add("XL")
-    if (remainder / 10 == 9) romNum.add("XC")
-    else romNum.add("D".repeat(partL))
-
-    var partX = remainder / 10
-    remainder = remainder % 10
-    if (remainder % 10 == 4) romNum.add("IV")
-    if (remainder % 10 == 9) romNum.add("IX")
-    else romNum.add("D".repeat(partX))
-
-
+    if (remainder / 100 == 9) // 900
+        romNum.add("CM")
+    if (remainder / 100 == 4) //400
+        romNum.add("CD")
+    if (remainder / 500 == 1) //500
+        romNum.add("D")
+    else {
+        var partC = remainder / 100
+        romNum.add("C".repeat(partC)) //100
+    }
 }
+
+
 
 /**
  * Очень сложная (7 баллов)
