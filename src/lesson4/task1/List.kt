@@ -396,31 +396,34 @@ fun russian(n: Int): String {
 
     if (n / 1000 > 0) {
         var thousandPart = n / 1000 //thousandPart = 165
-        if (n / 100 > 0) {
-            val sotni = n / 100
-            result.add(hundreds[sotni - 1])
-            thousandPart = n % 100
+        if (thousandPart / 100 > 0) {
+            val sotni1 = thousandPart / 100 //1
+            result.add(hundreds[sotni1 - 1])
+            thousandPart = n % 100 //65
         }
 
-        if (thousandPart / 10 > 0) {
-            val desytki = thousandPart / 10
-            result.add(tens[desytki - 1])
-            thousandPart %= 10
+        if (thousandPart / 10 > 0) { //thousandPart = 65
+            val desytki1 = thousandPart / 10 //6
+            result.add(tens[desytki1 - 1])
+            thousandPart %= 10 //6
         }
         if (thousandPart > 0) {
             result.add(numbers[thousandPart - 1])
         }
+
+        val z = n / 1000
+        val thousand = when (z % 10) {
+            in 1..4 -> "тысячи"
+            else -> "тысяч"
+        }
+
+        result.add(thousand)
     }
 
-
-    val z = n / 1000
-    val thousand = when (z % 10) {
-        in 1..4 -> "тысячи"
-        else -> "тысяч"
+    var remainder = 0
+    if (n / 1000 > 0) {
+        remainder = n % 1000
     }
-
-    result.add(thousand)
-    var remainder = n % 1000
 
     if (n / 100 > 0) {
         val sotni = n / 100
