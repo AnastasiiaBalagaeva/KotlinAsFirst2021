@@ -399,6 +399,11 @@ fun russian(n: Int): String {
     var remainder = 0
 
     n2 = n / 1000
+    val thousand = when (n2 % 10) {
+        in 1..4 -> "тысячи"
+        else -> "тысяч"
+    }
+
     if (n / 100 > 0) {
         val sotni = n / 100
         result.add(hundreds[sotni - 1])
