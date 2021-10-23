@@ -203,14 +203,12 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> = TODO()
  * Множители в списке должны располагаться по возрастанию.
  */
 fun factorize(n: Int): List<Int> {
-    var max = 1
-    var min = 1
     var m = n
     val factor = mutableListOf<Int>()
     for (i in m - 1 downTo 1) {
         if (m % i == 0) {
-            max = i
-            min = m / i
+            var max = i
+            var min = m / i
             factor.add(min)
             m = max
         }
@@ -228,7 +226,7 @@ fun factorize(n: Int): List<Int> {
  */
 fun factorizeToString(n: Int): String {
     var max: Int
-    var min = 1
+    var min: Int
     var m = n
     val factor = mutableListOf<Int>()
     for (i in m - 1 downTo 1) {
@@ -381,9 +379,9 @@ fun russian(n: Int): String {
             "восемьдесят",
             "девяносто"
         )
-    var numbers =
+    val numbers =
         listOf("один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять")
-    var tensSpecial = listOf(
+    val tensSpecial = listOf(
         "одиннадцать",
         "двенадцать",
         "тринадцать",
@@ -396,11 +394,16 @@ fun russian(n: Int): String {
     )
     val result = mutableListOf<String>()
 
+    //if (n / 1000 > 0) {
+       // result.add(numbers[remainder - 1])
+   // }
+
     val n2 = n / 1000
     val thousand = when (n2 % 10) {
         in 1..4 -> "тысячи"
         else -> "тысяч"
     }
+
     result.add(thousand)
     var remainder = n % 1000
 
@@ -418,11 +421,9 @@ fun russian(n: Int): String {
     if (remainder > 0) {
         result.add(numbers[remainder - 1])
     }
-    var thousands = {
-
-    }
 
     val final = result.joinToString()
     return final.replace(",", "")
 
 }
+
