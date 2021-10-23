@@ -207,8 +207,8 @@ fun factorize(n: Int): List<Int> {
     val factor = mutableListOf<Int>()
     for (i in m - 1 downTo 1) {
         if (m % i == 0) {
-            var max = i
-            var min = m / i
+            val max = i
+            val min = m / i
             factor.add(min)
             m = max
         }
@@ -394,12 +394,27 @@ fun russian(n: Int): String {
     )
     val result = mutableListOf<String>()
 
-    //if (n / 1000 > 0) {
-       // result.add(numbers[remainder - 1])
-   // }
+    if (n / 1000 > 0) {
+        var thousandPart = n / 1000 //thousandPart = 165
+        if (n / 100 > 0) {
+            val sotni = n / 100
+            result.add(hundreds[sotni - 1])
+            thousandPart = n % 100
+        }
 
-    val n2 = n / 1000
-    val thousand = when (n2 % 10) {
+        if (thousandPart / 10 > 0) {
+            val desytki = thousandPart / 10
+            result.add(tens[desytki - 1])
+            thousandPart %= 10
+        }
+        if (thousandPart > 0) {
+            result.add(numbers[thousandPart - 1])
+        }
+    }
+
+
+    val z = n / 1000
+    val thousand = when (z % 10) {
         in 1..4 -> "тысячи"
         else -> "тысяч"
     }
