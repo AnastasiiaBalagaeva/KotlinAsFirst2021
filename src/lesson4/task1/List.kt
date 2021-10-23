@@ -3,7 +3,6 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
-import java.util.logging.XMLFormatter
 import kotlin.math.sqrt
 
 // Урок 4: списки
@@ -240,7 +239,7 @@ fun factorizeToString(n: Int): String {
             m = max
         }
     }
-    var list = factor.sorted()
+    val list = factor.sorted()
 
 
     return list.joinToString(separator = "*")
@@ -304,43 +303,43 @@ fun roman(n: Int): String {
 
     val romNum = mutableListOf<String>()
 
-    var partM = n / 1000
+    val partM = n / 1000
     romNum.add("M".repeat(partM))
     var remainder = n % 1000
 
     if ((remainder / 500 == 1) && (remainder < 900)) {
         romNum.add("D")
-        remainder = remainder % 500
+        remainder %= 500
     }
     if (remainder / 100 == 4) {
         romNum.add("CD")
-        remainder = remainder % 400
+        remainder %= 400
     }
     if (remainder / 100 == 9) {
         romNum.add("CM")
-        remainder = remainder % 900
+        remainder %= 900
     } else if (remainder > 99) {
-        var partC = remainder % 500 / 100
+        val partC = remainder % 500 / 100
         romNum.add("C".repeat(partC))
     }
-    remainder = remainder % 100
+    remainder %= 100
 
     if ((remainder / 50 == 1) && (remainder < 90)) {
         romNum.add("L")
-        remainder = remainder % 50
+        remainder %= 50
     }
     if (remainder / 10 == 4) {
         romNum.add("XL")
-        remainder = remainder % 40
+        remainder %= 40
     }
     if (remainder / 10 == 9) {
         romNum.add("XC")
-        remainder = remainder % 90
+        remainder %= 90
     } else if (remainder > 9) {
-        var partX = remainder % 50 / 10
+        val partX = remainder % 50 / 10
         romNum.add("X".repeat(partX))
     }
-    remainder = remainder % 10
+    remainder %= 10
 
     when (remainder) {
         9 -> romNum.add("IX")
@@ -354,10 +353,9 @@ fun roman(n: Int): String {
         1 -> romNum.add("I")
     }
 
-    var z = romNum.joinToString()
-    var z1 = z.replace(",", "")
-    var z2 = z1.replace(" ", "")
-    return z2
+    val z = romNum.joinToString()
+    val z1 = z.replace(",", "")
+    return z1.replace(" ", "")
 }
 
 
@@ -369,9 +367,9 @@ fun roman(n: Int): String {
  * 23964 = "двадцать три тысячи девятьсот шестьдесят четыре"
  */
 fun russian(n: Int): String {
-    var hundreds =
-        listOf("сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот",)
-    var tens =
+    val hundreds =
+        listOf("сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот")
+    val tens =
         listOf(
             "десять",
             "двадцать",
@@ -396,14 +394,30 @@ fun russian(n: Int): String {
         "восемнадцать",
         "девятнадцать"
     )
-    var result = mutableListOf<String>()
-    var n2 = n
-    var k = 9
-    var remainder: Int
-    if (n2 / 100 > 0) {
-        var sotni = n2 / 100 //300 / 100 = 3
-        result.add(hundreds[sotni]) //
+    val result = mutableListOf<String>()
+    val n2 = n
+    var remainder = 0
+
+    n2 = n / 1000
+    if (n / 100 > 0) {
+        val sotni = n / 100
+        result.add(hundreds[sotni - 1])
+        remainder = n % 100
     }
 
-    return result.joinToString()
+    if (remainder / 10 > 0) {
+        val desytki = remainder / 10
+        result.add(tens[desytki - 1])
+        remainder %= 10
+    }
+    if (remainder > 0) {
+        result.add(numbers[remainder - 1])
+    }
+    var thousands = {
+
+    }
+
+    val final = result.joinToString()
+    return final.replace(",", "")
+
 }
