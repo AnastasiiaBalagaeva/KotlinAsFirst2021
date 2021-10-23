@@ -411,7 +411,7 @@ fun russian(n: Int): String {
             if ((thousandPart / 10 > 0) && (thousandPart in 11..19)) {
                 val desytki1 = thousandPart % 10
                 result.add(tensSpecial[desytki1 - 1])
-                thousandPart %= 10
+                thousandPart = 0
             } else if (thousandPart / 10 > 0) {
                 val desytki1 = thousandPart / 10
                 result.add(tens[desytki1 - 1])
