@@ -392,18 +392,19 @@ fun russian(n: Int): String {
         "восемнадцать",
         "девятнадцать"
     )
+    val thousandsSpecial("одна", "две")
     val result = mutableListOf<String>()
 
     if (n / 1000 > 0) {
-        var thousandPart = n / 1000 //thousandPart = 165
+        var thousandPart = n / 1000
         if (thousandPart / 100 > 0) {
-            val sotni1 = thousandPart / 100 //1
+            val sotni1 = thousandPart / 100
             result.add(hundreds[sotni1 - 1])
-            thousandPart = n % 100 //65
+            thousandPart = n % 100
         }
 
-        if (thousandPart / 10 > 0) { //thousandPart = 65
-            val desytki1 = thousandPart / 10 //6
+        if (thousandPart / 10 > 0) {
+            val desytki1 = thousandPart / 10
             result.add(tens[desytki1 - 1])
             thousandPart %= 10 //6
         }
@@ -420,13 +421,13 @@ fun russian(n: Int): String {
         result.add(thousand)
     }
 
-    var remainder = 0
+    var remainder = n
     if (n / 1000 > 0) {
         remainder = n % 1000
     }
 
-    if (n / 100 > 0) {
-        val sotni = n / 100
+    if (remainder / 100 > 0) {
+        val sotni = remainder / 100
         result.add(hundreds[sotni - 1])
         remainder = n % 100
     }
