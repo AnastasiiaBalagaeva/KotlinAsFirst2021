@@ -395,14 +395,14 @@ fun russian(n: Int): String {
         "девятнадцать"
     )
     val result = mutableListOf<String>()
-    val n2 = n
-    var remainder = 0
 
-    n2 = n / 1000
+    val n2 = n / 1000
     val thousand = when (n2 % 10) {
         in 1..4 -> "тысячи"
         else -> "тысяч"
     }
+    result.add(thousand)
+    var remainder = n % 1000
 
     if (n / 100 > 0) {
         val sotni = n / 100
