@@ -253,7 +253,10 @@ fun hasDifferentDigits(n: Int): Boolean {
 
         if (lastDigit != n1 % 10)
             return true
-        else continue
+        else if (n1 > 10)
+            continue
+        else if (n1 < 10) break
+
     }
     return false
 }
