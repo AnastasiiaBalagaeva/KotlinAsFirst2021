@@ -4,6 +4,7 @@ package lesson2.task2
 
 
 import lesson1.task1.sqr
+import java.lang.Math.pow
 import java.lang.Math.sqrt
 
 /**
@@ -78,7 +79,7 @@ fun daysInMonth(month: Int, year: Int): Int {
  * Вернуть true, если утверждение верно
  */
 fun circleInside(x1: Double, y1: Double, r1: Double, x2: Double, y2: Double, r2: Double): Boolean {
-    return r2 >= sqrt((x1 - x2) + (y1 - y2)) + r1
+    return r2 >= sqrt(pow(x1 - x2, 2.0) + pow(y1 - y2, 2.0)) + r1
 }
 
 /**
