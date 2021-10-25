@@ -3,7 +3,6 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
-import java.util.Collections.sort
 import kotlin.math.sqrt
 
 // Урок 4: списки
@@ -214,7 +213,8 @@ fun factorize(n: Int): List<Int> {
             m = max
         }
     }
-    return factor.sorted()
+    factor.sort()
+    return factor
 }
 
 /**
@@ -239,10 +239,10 @@ fun factorizeToString(n: Int): String {
  */
 fun convert(n: Int, base: Int): List<Int> {
     val result = mutableListOf<Int>()
-    var remainder = n
-    while (remainder > 0) {
-        remainder /= base
-        var remain = remainder - base * remainder
+    var interimRes = n
+    while (interimRes > 0) {
+        var remain = interimRes - base * interimRes //45 -
+        interimRes /= base
     }
 
     return result
