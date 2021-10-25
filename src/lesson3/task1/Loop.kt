@@ -251,16 +251,20 @@ fun isPalindrome(n: Int): Boolean {
 fun hasDifferentDigits(n: Int): Boolean {
     var n1 = n
     var lastDigit = 0
-    while (n1 != 0) {
-        lastDigit = n1 % 10
-        n1 /= 10
+    if (n in 1..9) return false
+    else {
+        while (n1 != 0) {
+            lastDigit = n1 % 10
+            n1 /= 10
 
-        if (lastDigit != n1 % 10)
-            return true
-        else if (n1 > 10)
-            continue
-        else if (n1 < 10) break
+            if (n in 1..9) return false
 
+            if (lastDigit != n1 % 10)
+                return true
+            else if (n1 > 10)
+                continue
+            else if (n1 < 10) break
+        }
     }
     return false
 }
