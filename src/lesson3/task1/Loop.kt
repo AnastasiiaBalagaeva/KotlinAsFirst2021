@@ -2,6 +2,7 @@
 
 package lesson3.task1
 
+import kotlin.math.roundToInt
 import kotlin.math.sqrt
 
 // Урок 3: циклы
@@ -108,13 +109,16 @@ fun fib(n: Int): Int {
  */
 fun minDivisor(n: Int): Int {
     var min = 1
-    for (i in 2..n) {
-        if (n % i == 0) {
-            min = i
-            break
+    if (isPrime(n)) return n
+    else {
+        for (i in 2..Math.sqrt(n.toDouble()).toInt()) {
+            if (n % i == 0) {
+                min = i
+                break
+            }
         }
+        return min
     }
-    return min
 }
 
 /**

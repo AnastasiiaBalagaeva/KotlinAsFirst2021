@@ -3,6 +3,7 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
+import java.util.Collections.sort
 import kotlin.math.sqrt
 
 // Урок 4: списки
@@ -225,22 +226,8 @@ fun factorize(n: Int): List<Int> {
  * Множители в результирующей строке должны располагаться по возрастанию.
  */
 fun factorizeToString(n: Int): String {
-    var max: Int
-    var min: Int
-    var m = n
-    val factor = mutableListOf<Int>()
-    for (i in m - 1 downTo 1) {
-        if (m % i == 0) {
-            max = i
-            min = m / i
-            factor.add(min)
-            m = max
-        }
-    }
-    val list = factor.sorted()
-
-
-    return list.joinToString(separator = "*")
+    val result = factorize(n)
+    return result.joinToString(separator = "*")
 }
 
 
