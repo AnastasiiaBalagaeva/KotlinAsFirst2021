@@ -419,7 +419,8 @@ fun russian(n: Int): String {
 
             val z = n / 1000
             val thousand = when (z % 10) {
-                in 1..4 -> "тысячи"
+                1 -> "тысяча"
+                in 2..4 -> "тысячи"
                 else -> "тысяч"
             }
 
