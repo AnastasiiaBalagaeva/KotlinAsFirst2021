@@ -217,7 +217,6 @@ fun factorize(n: Int): List<Int> {
     return factor.sorted()
 }
 
-
 /**
  * Сложная (4 балла)
  *
@@ -456,5 +455,6 @@ fun russian(n: Int): String {
         return final.replace(",", "")
     }
 }
+
 
 
