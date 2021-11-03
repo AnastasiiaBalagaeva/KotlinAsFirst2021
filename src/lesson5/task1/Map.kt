@@ -97,12 +97,11 @@ fun buildWordSet(text: List<String>): MutableSet<String> {
  *     -> mapOf(5 to listOf("Семён", "Михаил"), 3 to listOf("Марат"))
  */
 fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> {
-    val revert = mutableMapOf<Int, String>()
-    for ((name, grade) in grades) {
-        revert[grade] = mutableListOf<String>(name)
-        return revert
-    }
-
+    val result = mutableMapOf<Int, MutableList<String>>()
+    val res = mutableListOf<String>()
+    for ((name, grade) in grades)
+        res.add(name)
+    return result
 }
 
 /**
@@ -142,7 +141,12 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>) {
  * В выходном списке не должно быть повторяющихся элементов,
  * т. е. whoAreInBoth(listOf("Марат", "Семён, "Марат"), listOf("Марат", "Марат")) == listOf("Марат")
  */
-fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = TODO()
+fun whoAreInBoth(a: List<String>, b: List<String>): List<String> {
+    a.toSet()
+    b.toSet()
+    val result = a.intersect(b)
+    return result.toList()
+}
 
 /**
  * Средняя (3 балла)
@@ -201,7 +205,16 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
  * Например:
  *   canBuildFrom(listOf('a', 'b', 'o'), "baobab") -> true
  */
-fun canBuildFrom(chars: List<Char>, word: String): Boolean = TODO()
+fun canBuildFrom(chars: List<Char>, word: String): Boolean {
+
+    chars.toSet()
+    word.forEach {
+        if (word.intersect(chars))
+    }
+
+
+
+}
 
 /**
  * Средняя (4 балла)
@@ -308,3 +321,5 @@ fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> = TODO()
  *   ) -> emptySet()
  */
 fun bagPacking(treasures: Map<String, Pair<Int, Int>>, capacity: Int): Set<String> = TODO()
+
+
