@@ -117,15 +117,11 @@ fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> = TODO()
  *   containsIn(mapOf("a" to "z"), mapOf("a" to "zee", "b" to "sweet")) -> false
  */
 fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean {
-    for ((value1, value2) in a)
-        for ((value3, value4) in b) {
-            if ((a[value1] == b[value3]) && (a[value2] == b[value4])) continue
-            else break
-            return true
-        }
-    return false
+    a.forEach { (k, v) ->
+        if (v != b[k]) return false
+    }
+    return true
 }
-
 
 
 /**
@@ -248,10 +244,7 @@ fun extractRepeats(list: List<String>): Map<String, Int> = TODO()
  * Например:
  *   hasAnagrams(listOf("тор", "свет", "рот")) -> true
  */
-fun hasAnagrams(words: List<String>): Boolean {
-    words.joinToString()
-
-}
+fun hasAnagrams(words: List<String>): Boolean = TODO()
 
 /**
  * Сложная (5 баллов)
@@ -330,5 +323,4 @@ fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> = TODO()
  *   ) -> emptySet()
  */
 fun bagPacking(treasures: Map<String, Pair<Int, Int>>, capacity: Int): Set<String> = TODO()
-
 
