@@ -144,8 +144,7 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>) {
 fun whoAreInBoth(a: List<String>, b: List<String>): List<String> {
     a.toSet()
     b.toSet()
-    val result = a.intersect(b)
-    return result.toList()
+    return a.intersect(b).toList()
 }
 
 /**
@@ -206,15 +205,12 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
  *   canBuildFrom(listOf('a', 'b', 'o'), "baobab") -> true
  */
 fun canBuildFrom(chars: List<Char>, word: String): Boolean {
-
     chars.toSet()
-    word.forEach {
-        if (word.intersect(chars))
-    }
-
-
+    word.chunked(1)
+    return word.all { it in chars }
 
 }
+
 
 /**
  * Средняя (4 балла)
