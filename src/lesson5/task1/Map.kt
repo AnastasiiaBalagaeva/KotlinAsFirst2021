@@ -215,6 +215,7 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
 fun canBuildFrom(chars: List<Char>, word: String): Boolean {
     word.toSet()
     return word.all { it in chars }
+    //it это разбитое на части word - то есть chars от word
 }
 
 
