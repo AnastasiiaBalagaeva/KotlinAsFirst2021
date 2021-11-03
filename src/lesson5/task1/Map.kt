@@ -96,14 +96,15 @@ fun buildWordSet(text: List<String>): MutableSet<String> {
  *   buildGrades(mapOf("Марат" to 3, "Семён" to 5, "Михаил" to 5))
  *     -> mapOf(5 to listOf("Семён", "Михаил"), 3 to listOf("Марат"))
  */
-fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> {
+fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> = TODO()
+/*
     val result = mutableMapOf<Int, MutableList<String>>()
     val names = mutableListOf<String>()
     for ((name, grade) in grades) {
         result[grade] = names
     }
     return result
-}
+*/
 
 /**
  * Простая (2 балла)
@@ -115,7 +116,17 @@ fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> {
  *   containsIn(mapOf("a" to "z"), mapOf("a" to "z", "b" to "sweet")) -> true
  *   containsIn(mapOf("a" to "z"), mapOf("a" to "zee", "b" to "sweet")) -> false
  */
-fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean = TODO()
+fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean {
+    for ((value1, value2) in a)            //a, z in a,z
+        for ((value3, value4) in b) {      //a,z in a,zee
+            if ((a[value1] == b[value3]) && (a[value2] == b[value4])) continue
+            else break
+            return true
+        }
+    return false
+}
+
+
 
 /**
  * Простая (2 балла)
@@ -237,7 +248,10 @@ fun extractRepeats(list: List<String>): Map<String, Int> = TODO()
  * Например:
  *   hasAnagrams(listOf("тор", "свет", "рот")) -> true
  */
-fun hasAnagrams(words: List<String>): Boolean = TODO()
+fun hasAnagrams(words: List<String>): Boolean {
+    words.joinToString()
+
+}
 
 /**
  * Сложная (5 баллов)
