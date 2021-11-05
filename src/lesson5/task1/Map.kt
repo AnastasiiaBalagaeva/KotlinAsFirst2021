@@ -312,37 +312,37 @@ fun propagateHandshakes(friends: Map<String, Set<String>>): Map<String, Set<Stri
 fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> {
     val res = Pair(-1, -1)
     var remain = number
-    for ((index, value) in list.withIndex()) {
-        val map = list.associate { Pair(value, index) }
+    for ((index, j) in list.withIndex()) {
+        val map = list.associate { Pair(j, index) }
         remain -= list[index]
         if (remain in map) {
-            return Pair(map[value]!!, list[value]!!)
-        } else
+            return Pair(map.getValue(j), list[index])
         }
+    }
     return res
 }
 
 
-/**
- * Очень сложная (8 баллов)
- *
- * Входными данными является ассоциативный массив
- * "название сокровища"-"пара (вес сокровища, цена сокровища)"
- * и вместимость вашего рюкзака.
- * Необходимо вернуть множество сокровищ с максимальной суммарной стоимостью,
- * которые вы можете унести в рюкзаке.
- *
- * Перед решением этой задачи лучше прочитать статью Википедии "Динамическое программирование".
- *
- * Например:
- *   bagPacking(
- *     mapOf("Кубок" to (500 to 2000), "Слиток" to (1000 to 5000)),
- *     850
- *   ) -> setOf("Кубок")
- *   bagPacking(
- *     mapOf("Кубок" to (500 to 2000), "Слиток" to (1000 to 5000)),
- *     450
- *   ) -> emptySet()
- */
-fun bagPacking(treasures: Map<String, Pair<Int, Int>>, capacity: Int): Set<String> = TODO()
+    /**
+     * Очень сложная (8 баллов)
+     *
+     * Входными данными является ассоциативный массив
+     * "название сокровища"-"пара (вес сокровища, цена сокровища)"
+     * и вместимость вашего рюкзака.
+     * Необходимо вернуть множество сокровищ с максимальной суммарной стоимостью,
+     * которые вы можете унести в рюкзаке.
+     *
+     * Перед решением этой задачи лучше прочитать статью Википедии "Динамическое программирование".
+     *
+     * Например:
+     *   bagPacking(
+     *     mapOf("Кубок" to (500 to 2000), "Слиток" to (1000 to 5000)),
+     *     850
+     *   ) -> setOf("Кубок")
+     *   bagPacking(
+     *     mapOf("Кубок" to (500 to 2000), "Слиток" to (1000 to 5000)),
+     *     450
+     *   ) -> emptySet()
+     */
+    fun bagPacking(treasures: Map<String, Pair<Int, Int>>, capacity: Int): Set<String> = TODO()
 
