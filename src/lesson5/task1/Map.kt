@@ -117,8 +117,8 @@ fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> = TODO()
  *   containsIn(mapOf("a" to "z"), mapOf("a" to "zee", "b" to "sweet")) -> false
  */
 fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean {
-    a.forEach { (k, v) -> //(k,v in a)
-        if (v != b[k]) return false
+    a.forEach { (key, value) ->
+        if (value != b[key]) return false
     }
     return true
 }
@@ -215,7 +215,6 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
 fun canBuildFrom(chars: List<Char>, word: String): Boolean {
     word.toSet()
     return word.all { it in chars }
-    //it это разбитое на части word - то есть chars от word
 }
 
 
@@ -231,7 +230,16 @@ fun canBuildFrom(chars: List<Char>, word: String): Boolean {
  * Например:
  *   extractRepeats(listOf("a", "b", "a")) -> mapOf("a" to 2)
  */
-fun extractRepeats(list: List<String>): Map<String, Int> = TODO()
+/*
+fun extractRepeats(list: List<String>): Map<String, Int> {
+    var result = mutableMapOf<String, Int>()
+    var k = 0
+    list.forEach {
+        if (it == it)
+            result[it] = list.count()
+    }
+    return result
+} */
 
 /**
  * Средняя (3 балла)
@@ -300,7 +308,19 @@ fun propagateHandshakes(friends: Map<String, Set<String>>): Map<String, Set<Stri
  *   findSumOfTwo(listOf(1, 2, 3), 4) -> Pair(0, 2)
  *   findSumOfTwo(listOf(1, 2, 3), 6) -> Pair(-1, -1)
  */
-fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> = TODO()
+fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> {
+    val res = Pair(-1, -1)
+    var remain = number
+    for (i in list) {
+        val z = mutableMapOf(list)
+        remain -= list[i]
+        for ((index, value) in z) {
+
+        }
+    }
+    return res
+    }
+
 
 /**
  * Очень сложная (8 баллов)
