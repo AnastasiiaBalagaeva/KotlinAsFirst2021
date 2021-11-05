@@ -313,13 +313,12 @@ fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> {
     val res = Pair(-1, -1)
     var remain = number
     for ((index, value) in list.withIndex()) {
-        val map = list.associate { Pair(value, index) } //key, value
+        val map = list.associate { Pair(value, index) }
         remain -= list[index]
         if (remain in map) {
-            var qw = map[value]
-            return Pair(list[value], qw]
+            return Pair(map[value]!!, list[value]!!)
+        } else
         }
-    }
     return res
 }
 
