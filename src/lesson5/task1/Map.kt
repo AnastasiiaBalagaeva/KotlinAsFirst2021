@@ -311,12 +311,12 @@ fun propagateHandshakes(friends: Map<String, Set<String>>): Map<String, Set<Stri
  */
 fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> {
     val res = Pair(-1, -1)
-    var remain = number
+    var remain = number //4
     for ((index, num) in list.withIndex()) {
-        val map = list.associate { Pair(num, index) } //key - num; value - index
-        remain -= list[index]
-        if (remain in map.keys) {
-            return Pair(map.getValue(num), )
+        val map = list.associate { Pair(num, index) } //key - num; value - index   1 - 0; 2 - 1; 3 - 2;
+        remain -= list[index] //3
+        if (map.containsValue(remain)) { //проверить, есть ли в мапе keys равные remain
+            return Pair(map.getValue(num), list[index - 1])
         }
     }
     return res
