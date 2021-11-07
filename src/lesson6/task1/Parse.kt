@@ -2,6 +2,8 @@
 
 package lesson6.task1
 
+import lesson2.task2.daysInMonth
+
 // Урок 6: разбор строк, исключения
 // Максимальное количество баллов = 13
 // Рекомендуемое количество баллов = 11
@@ -76,6 +78,7 @@ fun main() {
  */
 fun dateStrToDigit(str: String): String = TODO()
 
+
 /**
  * Средняя (4 балла)
  *
@@ -86,7 +89,14 @@ fun dateStrToDigit(str: String): String = TODO()
  * Обратите внимание: некорректная с точки зрения календаря дата (например, 30 февраля 2009) считается неверными
  * входными данными.
  */
-fun dateDigitToStr(digital: String): String = TODO()
+fun dateDigitToStr(digital: String): String {
+    val days = digital.split(".") //days = {"15" "07" "2016"}
+    for (i in days) {
+        val number = i.toInt() //15 07 2016
+        daysInMonth(days[2].toInt(), days[3].toInt())
+    }
+}
+
 
 /**
  * Средняя (4 балла)
