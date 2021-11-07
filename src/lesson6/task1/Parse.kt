@@ -91,10 +91,24 @@ fun dateStrToDigit(str: String): String = TODO()
  */
 fun dateDigitToStr(digital: String): String {
     val days = digital.split(".") //days = {"15" "07" "2016"}
-    for (i in days) {
-        val number = i.toInt() //15 07 2016
-        daysInMonth(days[2].toInt(), days[3].toInt())
+    val translate = days[2].toInt()
+    daysInMonth(translate, days[3].toInt())
+    val z: String
+    when (translate) {
+        1 -> z = "января"
+        2 -> z = "февраля"
+        3 -> z = "марта"
+        4 -> z = "апреля"
+        5 -> z = "мая"
+        6 -> z = "июня"
+        7 -> z = "июля"
+        8 -> z = "августа"
+        9 -> z = "сентября"
+        10 -> z = "октября"
+        11 -> z = "ноября"
+        12 -> z = "декабря"
     }
+    return "${days[1]} $z ${days[3]}"
 }
 
 
