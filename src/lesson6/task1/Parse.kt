@@ -150,12 +150,14 @@ fun flattenPhoneNumber(phone: String): String = TODO()
  */
 fun bestLongJump(jumps: String): Int {
     val exp = Regex("""[^%-0-9 ]""").containsMatchIn(jumps)
-    if (exp) return -1
-    val list = jumps.split(" ") //"706" "45" "10"
-    for (i in list) {
-        val number = i.toInt()
+    if (!exp) return -1
+    else {
+        val list = jumps.split(" ") //"706" "%' "45" "10"
+        for (i in list) {
+            val number = i.toInt()
+        }
+        return list.maxOrNull()!!.toInt()
     }
-    return list.max().toInt()
 }
 
 /**
