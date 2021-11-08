@@ -90,27 +90,36 @@ fun dateStrToDigit(str: String): String = TODO()
  * входными данными.
  */
 fun dateDigitToStr(digital: String): String {
-    val days = digital.split(".") //days = {"15" "07" "2016"}
-    val month = days[1].toInt() //7
-    val year = days[2].toInt() //2016
-    if (daysInMonth(month, year) ) { //
-        var z = ""
-        when (month) {
-            1 -> z = "января"
-            2 -> z = "февраля"
-            3 -> z = "марта"
-            4 -> z = "апреля"
-            5 -> z = "мая"
-            6 -> z = "июня"
-            7 -> z = "июля"
-            8 -> z = "августа"
-            9 -> z = "сентября"
-            10 -> z = "октября"
-            11 -> z = "ноября"
-            12 -> z = "декабря"
-        }
-        return "${days[0]} $z ${days[2]}"
-    } else return ""
+    val date = digital.split(".") //days = {"15" "07" "2016"}
+    if (date.size > 3)
+        return ""
+    try {
+        val day = date[0].toInt() //15
+        val month = date[1].toInt() //7
+        val year = date[2].toInt() //2016
+        val daysMonth = daysInMonth(month, year)
+        if (day <= daysMonth) {
+            var z = ""
+            when (month) {
+                0 -> return ""
+                1 -> z = "января"
+                2 -> z = "февраля"
+                3 -> z = "марта"
+                4 -> z = "апреля"
+                5 -> z = "мая"
+                6 -> z = "июня"
+                7 -> z = "июля"
+                8 -> z = "августа"
+                9 -> z = "сентября"
+                10 -> z = "октября"
+                11 -> z = "ноября"
+                12 -> z = "декабря"
+            }
+            return "${date[0]} $z ${date[2]}"
+        } else return ""
+    } catch (e: NumberFormatException) {
+        return ""
+    }
 }
 
 
