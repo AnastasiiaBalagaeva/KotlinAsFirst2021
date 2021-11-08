@@ -94,9 +94,9 @@ fun dateDigitToStr(digital: String): String {
     if (date.size > 3)
         return ""
     try {
-        val day = date[0].toInt() //15
-        val month = date[1].toInt() //7
-        val year = date[2].toInt() //2016
+        val day = date[0].toInt()
+        val month = date[1].toInt()
+        val year = date[2].toInt()
         val daysMonth = daysInMonth(month, year)
         if (day <= daysMonth) {
             var z = ""
@@ -115,7 +115,7 @@ fun dateDigitToStr(digital: String): String {
                 11 -> z = "ноября"
                 12 -> z = "декабря"
             }
-            return "${date[0]} $z ${date[2]}"
+            return "$day $z $year"
         } else return ""
     } catch (e: NumberFormatException) {
         return ""
