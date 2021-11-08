@@ -153,14 +153,15 @@ fun bestLongJump(jumps: String): Int {
     if (!exp) return -1
     else {
         val list = jumps.split(" ")
-        for (i in list) {
-            try {
+        try {
+            for (i in list) {
                 val number = i.toInt()
-            } catch (e: NumberFormatException) {}
-        }
+            }
+        } catch (e: NumberFormatException) {}
         return list.maxOrNull()!!.toInt()
     }
 }
+
 
 /**
  * Сложная (6 баллов)
