@@ -152,9 +152,11 @@ fun bestLongJump(jumps: String): Int {
     val exp = Regex("""[^%-0-9 ]""").containsMatchIn(jumps)
     if (!exp) return -1
     else {
-        val list = jumps.split(" ") //"706" "%' "45" "10"
+        val list = jumps.split(" ")
         for (i in list) {
-            val number = i.toInt()
+            try {
+                val number = i.toInt()
+            } catch (e: NumberFormatException) {}
         }
         return list.maxOrNull()!!.toInt()
     }
