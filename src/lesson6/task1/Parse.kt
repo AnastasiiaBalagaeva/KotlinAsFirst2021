@@ -78,7 +78,6 @@ fun main() {
  */
 fun dateStrToDigit(str: String): String = TODO()
 
-
 /**
  * Средняя (4 балла)
  *
@@ -149,7 +148,15 @@ fun flattenPhoneNumber(phone: String): String = TODO()
  * Прочитать строку и вернуть максимальное присутствующее в ней число (717 в примере).
  * При нарушении формата входной строки или при отсутствии в ней чисел, вернуть -1.
  */
-fun bestLongJump(jumps: String): Int = TODO()
+fun bestLongJump(jumps: String): Int {
+    val exp = Regex("""[^%-0-9 ]""").containsMatchIn(jumps)
+    if (exp) return -1
+    val list = jumps.split(" ") //"706" "45" "10"
+    for (i in list) {
+        val number = i.toInt()
+    }
+    return list.max().toInt()
+}
 
 /**
  * Сложная (6 баллов)
