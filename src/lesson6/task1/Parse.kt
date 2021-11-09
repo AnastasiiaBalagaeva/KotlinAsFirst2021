@@ -149,7 +149,7 @@ fun flattenPhoneNumber(phone: String): String = TODO()
  * При нарушении формата входной строки или при отсутствии в ней чисел, вернуть -1.
  */
 fun bestLongJump(jumps: String): Int {
-    val exp = Regex("""[^%-0-9 ]""").containsMatchIn(jumps)
+    val exp = Regex("""[^%-0-9 ]""").containsMatchIn(jumps) //если содержит все что угодно кроме % - 1233242342
     if (!exp) return -1
     else {
         val list = jumps.split(" ")
