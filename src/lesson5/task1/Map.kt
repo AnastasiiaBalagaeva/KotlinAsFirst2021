@@ -223,17 +223,6 @@ fun canBuildFrom(chars: List<Char>, word: String): Boolean {
  *   extractRepeats(listOf("a", "b", "a")) -> mapOf("a" to 2)
  */
 
-fun extractRepeats(list: List<String>): Map<String, Int> = TODO()
-/*
-    var result = mutableMapOf<String, Int>()
-    var k = 0
-    list.forEach {
-        if (it == it)
-            result[it] = list.count()
-    }
-    return result
-} */
-
 /**
  * Средняя (3 балла)
  *
@@ -303,13 +292,13 @@ fun propagateHandshakes(friends: Map<String, Set<String>>): Map<String, Set<Stri
  */
 fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> {
     val res = Pair(-1, -1)
-    var remain = number //4
+    val map = mutableMapOf<Int, Int>()
     for ((index, num) in list.withIndex()) {
-        val map = list.associate { Pair(num, index) } //key - num; value - index   1 - 0; 2 - 1; 3 - 2;
-        remain -= list[index] //3
-        if (map.containsValue(remain)) { //проверить, есть ли в мапе keys равные remain
-            return Pair(map.getValue(num), list[index - 1])
+        val remain = number - num //4-1=3 4-2=2 4-3=1
+        if (map.containsKey(remain)) {
+            return Pair(map.getValue(remain), index)
         }
+        map[num] = index //(1 0) (2 1)
     }
     return res
 }
