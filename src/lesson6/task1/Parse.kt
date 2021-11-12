@@ -162,6 +162,8 @@ fun bestLongJump(jumps: String): Int {
     }
 }
 
+val exp = Regex("""[%-0-9%s]+""")
+
 
 /**
  * Сложная (6 баллов)

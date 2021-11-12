@@ -294,11 +294,11 @@ fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> {
     val res = Pair(-1, -1)
     val map = mutableMapOf<Int, Int>()
     for ((index, num) in list.withIndex()) {
-        val remain = number - num //4-1=3 4-2=2 4-3=1
+        val remain = number - num
         if (map.containsKey(remain)) {
             return Pair(map.getValue(remain), index)
         }
-        map[num] = index //(1 0) (2 1)
+        map[num] = index
     }
     return res
 }
