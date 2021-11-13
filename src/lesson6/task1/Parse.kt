@@ -149,15 +149,16 @@ fun flattenPhoneNumber(phone: String): String = TODO()
  * При нарушении формата входной строки или при отсутствии в ней чисел, вернуть -1.
  */
 fun bestLongJump(jumps: String): Int {
-    val exp = Regex("""[%][-]\D\s]""").matches(jumps)
-    if (!exp) return -1
+    if (jumps.contains(Regex("""^\d\s\-%]""")))
+        return -1
     else {
         val list = jumps.split(" ")
-        try {
-            for (i in list) {
+        for (i in list) {
+            try {
                 val number = i.toInt()
+            } catch (e: NumberFormatException) {
             }
-        } catch (e: NumberFormatException) {}
+        }
         return list.maxOrNull()!!.toInt()
     }
 }
