@@ -409,53 +409,47 @@ fun russian(n: Int): String {
             }
 
             val z = n / 1000
-            if (z <= 100) {
-                val thousand = when (z % 10) {
-                    1 -> "тысяча"
-                    in 2..4 -> "тысячи"
-                    else -> "тысяч"
-                }
-                result.add(thousand)
+            val thousand = when {
+                z % 10 == 1 -> "тысяча"
+                z % 10 in 2..4 -> "тысячи"
+                z % 10 in 5..9 -> "тысяч"
+                z % 100 in 11..19 -> "тысяч"
+                z / 100 in 1..9 -> "тысяч"
+                else -> "тысячи"
             }
-            if (z > 100) {
-                val thousand2 = when (z % 100) {
-                    1 -> "тысяча"
-                    in 2..4 -> "тысячи"
-                    else -> "тысяч"
-                }
-                result.add(thousand2)
-            }
+            result.add(thousand)
         }
-
-        var remainder = n
-        if (n / 1000 > 0) {
-            remainder = n % 1000
-        }
-
-        if (remainder / 100 > 0) {
-            val sotni = remainder / 100
-            result.add(hundreds[sotni - 1])
-            remainder = n % 100
-        }
-
-        if ((remainder / 10 > 0) && (remainder in 11..19)) {
-            val desytki1 = remainder % 10
-            result.add(tensSpecial[desytki1 - 1])
-            remainder = 0
-        } else if (remainder / 10 > 0) {
-            val desytki1 = remainder / 10
-            result.add(tens[desytki1 - 1])
-            remainder %= 10
-        }
-
-        if (remainder > 0) {
-            result.add(numbers[remainder - 1])
-        }
-
-        val final = result.joinToString()
-        return final.replace(",", "")
     }
+
+    var remainder = n
+    if (n / 1000 > 0) {
+        remainder = n % 1000
+    }
+
+    if (remainder / 100 > 0) {
+        val sotni = remainder / 100
+        result.add(hundreds[sotni - 1])
+        remainder = n % 100
+    }
+
+    if ((remainder / 10 > 0) && (remainder in 11..19)) {
+        val desytki1 = remainder % 10
+        result.add(tensSpecial[desytki1 - 1])
+        remainder = 0
+    } else if (remainder / 10 > 0) {
+        val desytki1 = remainder / 10
+        result.add(tens[desytki1 - 1])
+        remainder %= 10
+    }
+
+    if (remainder > 0) {
+        result.add(numbers[remainder - 1])
+    }
+
+    val final = result.joinToString()
+    return final.replace(",", "")
 }
+
 
 
 

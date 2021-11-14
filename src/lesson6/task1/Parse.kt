@@ -92,7 +92,7 @@ fun dateStrToDigit(str: String): String = TODO()
  */
 fun dateDigitToStr(digital: String): String {
     val date = digital.split(".")
-    if ((date.size != 3) || (date[2].length < 4))
+    if (date.size != 3)
         return ""
     try {
         val day = date[0].toInt()
