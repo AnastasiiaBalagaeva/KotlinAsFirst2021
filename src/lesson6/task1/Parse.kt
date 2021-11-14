@@ -190,10 +190,12 @@ fun plusMinus(expression: String): Int {
     if (expression.contains(Regex("""[(\d\s\d)||(+\s+)||(\-\s\-]""")))
         throw IllegalArgumentException()
     val list = expression.split(" ")
-    for (i in list) {
-        list[i].toInt()
-
-    }
+    try {
+        for (i in list) {
+            list[i].toInt()
+            return expression
+        }
+    } catch (e: NumberFormatException) {}
 }
 
 /**
