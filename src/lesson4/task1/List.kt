@@ -409,13 +409,22 @@ fun russian(n: Int): String {
             }
 
             val z = n / 1000
-            val thousand = when (z % 10) {
-                1 -> "тысяча"
-                in 2..4 -> "тысячи"
-                else -> "тысяч"
+            if (z <= 100) {
+                val thousand = when (z % 10) {
+                    1 -> "тысяча"
+                    in 2..4 -> "тысячи"
+                    else -> "тысяч"
+                }
+                result.add(thousand)
             }
-
-            result.add(thousand)
+            if (z > 100) {
+                val thousand2 = when (z % 100) {
+                    1 -> "тысяча"
+                    in 2..4 -> "тысячи"
+                    else -> "тысяч"
+                }
+                result.add(thousand2)
+            }
         }
 
         var remainder = n
