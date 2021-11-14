@@ -3,6 +3,8 @@
 package lesson6.task1
 
 import lesson2.task2.daysInMonth
+import java.lang.IllegalArgumentException
+import kotlin.math.exp
 
 // Урок 6: разбор строк, исключения
 // Максимальное количество баллов = 13
@@ -149,21 +151,18 @@ fun flattenPhoneNumber(phone: String): String = TODO()
  * При нарушении формата входной строки или при отсутствии в ней чисел, вернуть -1.
  */
 fun bestLongJump(jumps: String): Int {
-    if (jumps.contains(Regex("""[^\d\s\-%]""")))
+    if (jumps.contains(Regex("""[^\d\s-%]""")))
         return -1
     else {
         val list = jumps.split(" ")
-        for (i in list) {
-            try {
-                val number = i.toInt()
-                return list.maxOrNull()!!.toInt()
-            } catch (e: NumberFormatException) {
-                return -1
-            }
+        try {
+            return list.maxOrNull()!!.toInt()
+        } catch (e: NumberFormatException) {
+            return -1
         }
     }
-    return -1
 }
+
 
 /**
  * Сложная (6 баллов)
@@ -187,7 +186,12 @@ fun bestHighJump(jumps: String): Int = TODO()
  * Вернуть значение выражения (6 для примера).
  * Про нарушении формата входной строки бросить исключение IllegalArgumentException
  */
-fun plusMinus(expression: String): Int = TODO()
+fun plusMinus(expression: String): Int {
+    if (expression.contains(Regex("""[(\d\s\d)||(+\s+)||(-\s-]""")))
+        throw IllegalArgumentException()
+    val list = expression.split(" ")
+
+}
 
 /**
  * Сложная (6 баллов)
