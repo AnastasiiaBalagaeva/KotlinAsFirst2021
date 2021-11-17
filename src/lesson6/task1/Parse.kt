@@ -186,7 +186,22 @@ fun bestHighJump(jumps: String): Int = TODO()
  * Вернуть значение выражения (6 для примера).
  * Про нарушении формата входной строки бросить исключение IllegalArgumentException
  */
-fun plusMinus(expression: String): Int = TODO()
+fun plusMinus(expression: String): Int {
+    if (expression.contains(Regex("""[(\d\s\d)||(+\s+)||(\-\s\-]""")))
+        throw IllegalArgumentException(expression)
+    var result = 0
+    val list = expression.split(" ")
+    result = list[0].toInt()
+    try {
+        for (i in 2..list.size) {
+            if (list[i - 1] == "+")
+                result += list[i].toInt()
+            if (list[i - 1] == "-")
+                result -= list[i].toInt()
+        }
+    } catch (e: NumberFormatException) {}
+    return result
+}
 
 /**
  * Сложная (6 баллов)
