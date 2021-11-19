@@ -3,8 +3,6 @@
 package lesson6.task1
 
 import lesson2.task2.daysInMonth
-import java.lang.IllegalArgumentException
-import kotlin.math.exp
 
 // Урок 6: разбор строк, исключения
 // Максимальное количество баллов = 13
@@ -186,12 +184,11 @@ fun bestHighJump(jumps: String): Int = TODO()
  * Вернуть значение выражения (6 для примера).
  * Про нарушении формата входной строки бросить исключение IllegalArgumentException
  */
-fun plusMinus(expression: String): Int {
-    if (expression.contains(Regex("""[(\d\s\d)||(+\s+)||(\-\s\-]""")))
+fun plusMinus(expression: String): Int = TODO()
+/*    if (expression.contains(Regex("""[(\d\s\d)||(+\s+)||(-\s-]""")))
         throw IllegalArgumentException(expression)
-    var result = 0
     val list = expression.split(" ")
-    result = list[0].toInt()
+    var result = list[0].toInt()
     try {
         for (i in 2..list.size) {
             if (list[i - 1] == "+")
@@ -201,7 +198,7 @@ fun plusMinus(expression: String): Int {
         }
     } catch (e: NumberFormatException) {}
     return result
-}
+}*/
 
 /**
  * Сложная (6 баллов)
@@ -212,7 +209,15 @@ fun plusMinus(expression: String): Int {
  * Вернуть индекс начала первого повторяющегося слова, или -1, если повторов нет.
  * Пример: "Он пошёл в в школу" => результат 9 (индекс первого 'в')
  */
-fun firstDuplicateIndex(str: String): Int = TODO()
+fun firstDuplicateIndex(str: String): Int {
+    for (i in str.withIndex()) {
+        val sub = str.substringBefore(" ")
+        val sub2 = str.substringAfter(" ")
+        if (sub == sub2) str.removeSurrounding(sub)
+    }
+    return str
+}
+
 
 /**
  * Сложная (6 баллов)
