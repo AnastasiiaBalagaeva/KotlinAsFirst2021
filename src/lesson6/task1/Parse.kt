@@ -210,7 +210,7 @@ fun plusMinus(expression: String): Int = TODO()
  * Пример: "Он пошёл в в школу" => результат 9 (индекс первого 'в')
  */
 fun firstDuplicateIndex(str: String): Int {
-    val list = str.split(" ")
+    val list = str.split(" ") //"он" "пошел" "в" "в" "школу"
     var k = 0
     for (i in list.indices) {
         if (i != 0) {
