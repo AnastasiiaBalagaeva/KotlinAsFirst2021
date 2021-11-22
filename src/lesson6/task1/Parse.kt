@@ -220,7 +220,7 @@ fun firstDuplicateIndex(str: String): Int {
         }
     }
     for (j in 0..k) {
-        var res = str.substringBefore(list[k])
+        val res = str.substringBefore(list[k])
         return res.length
     }
     return -1
