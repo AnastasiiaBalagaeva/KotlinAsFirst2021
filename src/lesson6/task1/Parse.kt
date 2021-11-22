@@ -185,20 +185,6 @@ fun bestHighJump(jumps: String): Int = TODO()
  * Про нарушении формата входной строки бросить исключение IllegalArgumentException
  */
 fun plusMinus(expression: String): Int = TODO()
-/*    if (expression.contains(Regex("""[(\d\s\d)||(+\s+)||(-\s-]""")))
-        throw IllegalArgumentException(expression)
-    val list = expression.split(" ")
-    var result = list[0].toInt()
-    try {
-        for (i in 2..list.size) {
-            if (list[i - 1] == "+")
-                result += list[i].toInt()
-            if (list[i - 1] == "-")
-                result -= list[i].toInt()
-        }
-    } catch (e: NumberFormatException) {}
-    return result
-}*/
 
 /**
  * Сложная (6 баллов)
@@ -210,20 +196,25 @@ fun plusMinus(expression: String): Int = TODO()
  * Пример: "Он пошёл в в школу" => результат 9 (индекс первого 'в')
  */
 fun firstDuplicateIndex(str: String): Int {
-    val list = str.split(" ") //"он" "пошел" "в" "в" "школу"
+    val list = str.split(" ")
     var k = 0
+    var res = 0
+    var flag = false
     for (i in list.indices) {
         if (i != 0) {
-            if (list[i] == list[i - 1]) {
+            if (list[i].equals(list[i - 1], ignoreCase = true)) {
                 k = i - 1
+                flag
             }
         }
     }
-    for (j in 0..k) {
-        val res = str.substringBefore(list[k])
-        return res.length
+    var j = 0
+    while (j != k) {
+        res += list[j].length + 1
+        j++
     }
-    return -1
+    if (!flag) return -1
+    else return res
 }
 
 
