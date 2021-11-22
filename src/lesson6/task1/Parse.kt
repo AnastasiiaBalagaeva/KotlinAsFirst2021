@@ -199,12 +199,12 @@ fun firstDuplicateIndex(str: String): Int {
     val list = str.split(" ")
     var k = 0
     var res = 0
-    var flag = false
+    var temp = 1
     for (i in list.indices) {
         if (i != 0) {
             if (list[i].equals(list[i - 1], ignoreCase = true)) {
                 k = i - 1
-                flag
+                temp = 2
             }
         }
     }
@@ -213,7 +213,7 @@ fun firstDuplicateIndex(str: String): Int {
         res += list[j].length + 1
         j++
     }
-    if (!flag) return -1
+    if (temp == 1) return -1
     else return res
 }
 
