@@ -206,11 +206,10 @@ fun top20Words(inputName: String): Map<String, Int> = TODO()
  */
 fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: String) {
     val outputStream = File(outputName).bufferedWriter()
-    val lines = File(inputName).readLines()
     val charsToReplace = mapOf('з' to "zz", 'р' to "r", 'д' to "d", 'й' to "y", 'М' to "m", 'и' to "yy", '!' to "!!!")
     val result = StringBuilder()
-    for (line in lines.indices) {
-        for (i in lines[line]) {
+    for (line in File(inputName).readLines()) {
+        for (i in line) {
             when {
                 i in charsToReplace -> result.append(charsToReplace[i])
                 (i.isUpperCase()) && (i.lowercaseChar() in charsToReplace) -> {
@@ -226,12 +225,6 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
     }
     outputStream.write(result.toString())
     outputStream.close()
-
-}
-
-fun main() {
-    val z = "мир"
-    println(z.replace('м', 'М', ignoreCase = true))
 }
 
 
@@ -260,32 +253,28 @@ fun main() {
  * Обратите внимание: данная функция не имеет возвращаемого значения
  */
 fun chooseLongestChaoticWord(inputName: String, outputName: String) {
-
+    val outputStream = File(outputName).bufferedWriter()
+    val lines = File(inputName).readLines() //список строк
+    val chars = mutableSetOf<Char>()
+    val maxWord = StringBuilder()
+    var maxLength = 0
+    for (i in lines.indices) { //слово
+        for (char in lines[i]) { //буква
+            chars.add(char.lowercaseChar())
+            if ((chars.size == lines[i].length) && (lines[i].length > maxLength)) { //нет повторяющихся букв и слово длиннее
+                maxWord.clear()
+                maxWord.append(lines[i])
+                chars.clear()
+                maxLength = lines[i].length
+            } else if ((chars.size == lines[i].length) && (lines[i].length == maxLength)) { //нет повторяющихся букв и словв равны
+                maxWord.append(", ${lines[i]}")
+                chars.clear()
+            } else if (lines[i].length < maxLength) chars.clear()
+        }
+    }
+    outputStream.write(maxWord.toString())
+    outputStream.close()
 }
-//    val outputStream = File(outputName).bufferedWriter()
-//    val lines = File(inputName).readLines()
-//    val chars = mutableSetOf<Char>()
-//    val maxWord = StringBuilder()
-//    var maxLength = lines[0].length
-//    maxWord.append(lines[0])
-//    for (i in lines.indices) { //слово
-//        for (char in lines[i]) { //буква
-//            chars.add(char.lowercaseChar())
-//            if ((chars.size == lines[i].length) && (lines[i].length > maxLength)) { //нет повторяющихся букв и слово длиннее
-//                maxWord.clear()
-//                maxWord.append(lines[i])
-//                chars.clear()
-//                maxLength = lines[i].length
-//            } else if ((chars.size == lines[i].length) && (lines[i].length == maxLength)) { //нет повторяющихся букв и слово равно
-//                maxWord.append(", ${lines[i]}")
-//                chars.clear()
-//            }
-//        }
-//    }
-//
-//    outputStream.write('f')
-//    outputStream.close()
-//}
 
 
 /**
