@@ -93,7 +93,7 @@ fun dateDigitToStr(digital: String): String {
         return ""
     val date = digital.split(".")
     if ((date.size != 3) || (date[0].toInt() > 31) || (date[0].toInt() < 1) || (date[2].toInt() < 1) ||
-        (date[1].toInt() > 12) || (date[1].toInt() < 1) || (date[2].length > 4))
+        (date[1].toInt() > 12) || (date[1].toInt() < 1))
         return ""
     try {
         val day = date[0].toInt()
@@ -211,6 +211,7 @@ fun firstDuplicateIndex(str: String): Int {
             if (list[i].equals(list[i - 1], ignoreCase = true)) {
                 k = i - 1
                 temp = 2
+                break
             }
         }
     }
