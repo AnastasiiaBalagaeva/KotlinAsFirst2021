@@ -211,7 +211,6 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
     val result = StringBuilder()
     for (line in lines.indices) {
         for (i in lines[line]) {
-            if (i == 'м') result.append("\n")
             when {
                 i in charsToReplace -> result.append(charsToReplace[i])
                 (i.isUpperCase()) && (i.lowercaseChar() in charsToReplace) -> {
@@ -223,6 +222,7 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
                 else -> result.append(i)
             }
         }
+        result.append("\n")
     }
     outputStream.write(result.toString())
     outputStream.close()

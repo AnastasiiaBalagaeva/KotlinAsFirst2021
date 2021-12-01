@@ -408,9 +408,10 @@ fun russian(n: Int): String {
                 result.add(numbersSpecial[thousandPart - 1])
             }
 
-            val z = n / 1000 //70
+            val z = n / 1000
             val thousand = when {
-                z % 10 == 1 -> "тысяча"
+                z % 100 in 11..19 -> "тысяч"
+                (z % 10 == 1) -> "тысяча"
                 ((z % 100 / 10 != 1) && (z % 10 == 2 || z % 10 == 3 || z % 10 == 4)) -> "тысячи"
                 else -> "тысяч"
             }
