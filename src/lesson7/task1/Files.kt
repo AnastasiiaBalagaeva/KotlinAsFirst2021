@@ -253,27 +253,27 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
  * Обратите внимание: данная функция не имеет возвращаемого значения
  */
 fun chooseLongestChaoticWord(inputName: String, outputName: String) {
-    val outputStream = File(outputName).bufferedWriter()
-    val lines = File(inputName).readLines() //список строк
-    val chars = mutableSetOf<Char>()
-    val maxWord = StringBuilder()
-    var maxLength = 0
-    for (i in lines.indices) { //слово
-        for (char in lines[i]) { //буква
-            chars.add(char.lowercaseChar())
-            if ((chars.size == lines[i].length) && (lines[i].length > maxLength)) { //нет повторяющихся букв и слово длиннее
-                maxWord.clear()
-                maxWord.append(lines[i])
-                chars.clear()
-                maxLength = lines[i].length
-            } else if ((chars.size == lines[i].length) && (lines[i].length == maxLength)) { //нет повторяющихся букв и словв равны
-                maxWord.append(", ${lines[i]}")
-                chars.clear()
-            } else if (lines[i].length < maxLength) chars.clear()
-        }
-    }
-    outputStream.write(maxWord.toString())
-    outputStream.close()
+//    val outputStream = File(outputName).bufferedWriter()
+//    val lines = File(inputName).readLines() //список строк
+//    val chars = mutableSetOf<Char>()
+//    val maxWord = StringBuilder()
+//    var maxLength = 0
+//    for (i in lines.indices) { //слово
+//        for (char in lines[i]) { //буква
+//            chars.add(char.lowercaseChar())
+//            if ((chars.size == lines[i].length) && (lines[i].length > maxLength)) { //нет повторяющихся букв и слово длиннее
+//                maxWord.clear()
+//                maxWord.append(lines[i])
+//                chars.clear()
+//                maxLength = lines[i].length
+//            } else if ((chars.size == lines[i].length) && (lines[i].length == maxLength)) { //нет повторяющихся букв и словв равны
+//                maxWord.append(", ${lines[i]}")
+//                chars.clear()
+//            } else if (lines[i].length < maxLength) chars.clear()
+//        }
+//    }
+//    outputStream.write(maxWord.toString())
+//    outputStream.close()
 }
 
 
