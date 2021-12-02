@@ -209,17 +209,19 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
     val result = StringBuilder()
     for (line in File(inputName).readLines()) {
         for (i in line) {
-            when {
-                i in dictionary -> result.append(dictionary[i.lowercaseChar()]!!.lowercase())
-                (i.isUpperCase()) && (i.lowercaseChar() in dictionary) -> {
-                    val temp: String = dictionary[i.lowercaseChar()]!!
-                    if (temp.length > 1)
-                        result.append(temp[0].uppercaseChar() + temp.drop(1).lowercase())
-                    else result.append(temp[0].uppercaseChar())
+            if (dictionary[i] != null) {
+                when {
+                    i in dictionary -> result.append(dictionary[i.lowercaseChar()]!!.lowercase())
+                    (i.isUpperCase()) && (i.lowercaseChar() in dictionary) -> {
+                        val temp: String = dictionary[i.lowercaseChar()]!!
+                        if (temp.length > 1)
+                            result.append(temp[0].uppercaseChar() + temp.drop(1).lowercase())
+                        else result.append(temp[0].uppercaseChar())
+                    }
+                    (i.isLowerCase()) && (i.uppercaseChar() in dictionary) ->
+                        result.append(dictionary[i.uppercaseChar()]!!.lowercase())
+                    else -> result.append(i)
                 }
-                (i.isLowerCase()) && (i.uppercaseChar() in dictionary) ->
-                    result.append(dictionary[i.uppercaseChar()]!!.lowercase())
-                else -> result.append(i)
             }
         }
         result.append("\n")
