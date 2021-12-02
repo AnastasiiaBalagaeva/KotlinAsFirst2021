@@ -210,7 +210,7 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
     for (line in File(inputName).readLines()) {
         for (i in line) {
             when {
-                i in dictionary -> result.append(dictionary[i.lowercaseChar()]?.lowercase())
+                i in dictionary -> result.append(dictionary[i.lowercaseChar()]!!.lowercase())
                 (i.isUpperCase()) && (i.lowercaseChar() in dictionary) -> {
                     val temp: String = dictionary[i.lowercaseChar()]!!
                     if (temp.length > 1)
