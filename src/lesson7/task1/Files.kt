@@ -3,6 +3,7 @@
 package lesson7.task1
 
 import java.io.File
+import java.lang.NullPointerException
 
 // Урок 7: работа с файлами
 // Урок интегральный, поэтому его задачи имеют сильно увеличенную стоимость
@@ -209,7 +210,7 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
     val result = StringBuilder()
     for (line in File(inputName).readLines()) {
         for (i in line) {
-            if (dictionary[i] != null) {
+            try {
                 when {
                     i in dictionary -> result.append(dictionary[i.lowercaseChar()]!!.lowercase())
                     (i.isUpperCase()) && (i.lowercaseChar() in dictionary) -> {
@@ -222,7 +223,7 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
                         result.append(dictionary[i.uppercaseChar()]!!.lowercase())
                     else -> result.append(i)
                 }
-            }
+            } catch (e: NullPointerException) {}
         }
         result.append("\n")
     }
