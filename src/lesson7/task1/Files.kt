@@ -213,10 +213,10 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
             when {
                 !(i.isLetter()) && (i in dictionary) -> result.append(dictionary[i]!!.lowercase())
                 (i in dictionary) && (i.isUpperCase()) -> {
-                    val temp: String = dictionary[i]!!
-                    if (temp.length > 1)
-                        result.append(temp[0].uppercaseChar() + temp.drop(1).lowercase())
-                    else result.append(temp[0].uppercaseChar())
+                    val temp1: String = dictionary[i]!!
+                    if (temp1.length > 1)
+                        result.append(temp1[0].uppercaseChar() + temp1.drop(1).lowercase())
+                    else result.append(temp1[0].uppercaseChar())
                 }
                 (i in dictionary) && (i.isLowerCase()) -> result.append(dictionary[i]!!.lowercase())
                 (i.isUpperCase()) && (i.lowercaseChar() in dictionary) -> {
