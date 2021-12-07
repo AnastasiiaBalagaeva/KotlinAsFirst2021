@@ -216,14 +216,14 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
                     val temp1: String = dictionary[i]!!
                     if (temp1.length > 1)
                         result.append(temp1[0].uppercaseChar() + temp1.drop(1).lowercase())
-                    else result.append(temp1[0].uppercaseChar())
+                    else if (temp1.length == 1) result.append(temp1[0].uppercaseChar())
                 }
                 (i in dictionary) && (i.isLowerCase()) -> result.append(dictionary[i]!!.lowercase())
                 (i.isUpperCase()) && (i.lowercaseChar() in dictionary) -> {
                     val temp: String = dictionary[i.lowercaseChar()]!!
                     if (temp.length > 1)
                         result.append(temp[0].uppercaseChar() + temp.drop(1).lowercase())
-                    else result.append(temp[0].uppercaseChar())
+                    else if (temp.length == 1) result.append(temp[0].uppercaseChar())
                 }
                 (i.isLowerCase()) && (i.uppercaseChar() in dictionary) ->
                     result.append(dictionary[i.uppercaseChar()]!!.lowercase())
@@ -262,29 +262,32 @@ fun transliterate(inputName: String, dictionary: Map<Char, String>, outputName: 
  * Обратите внимание: данная функция не имеет возвращаемого значения
  */
 fun chooseLongestChaoticWord(inputName: String, outputName: String) {
+    TODO()
+}
 //    val outputStream = File(outputName).bufferedWriter()
 //    val lines = File(inputName).readLines() //список строк
 //    val chars = mutableSetOf<Char>()
 //    val maxWord = StringBuilder()
 //    var maxLength = 0
-//    for (i in lines.indices) { //слово
+//    for (i in lines.indices) { //строка (слово в данном случае)
 //        for (char in lines[i]) { //буква
-//            chars.add(char.lowercaseChar())
+//            val char1 = char.lowercaseChar()
+//            chars.add(char1)
+//
 //            if ((chars.size == lines[i].length) && (lines[i].length > maxLength)) { //нет повторяющихся букв и слово длиннее
 //                maxWord.clear()
 //                maxWord.append(lines[i])
 //                chars.clear()
 //                maxLength = lines[i].length
-//            } else if ((chars.size == lines[i].length) && (lines[i].length == maxLength)) { //нет повторяющихся букв и словв равны
+//            } else if ((chars.size == lines[i].length) && (lines[i].length == maxLength)) { //нет повторяющихся букв и слова равны
 //                maxWord.append(", ${lines[i]}")
 //                chars.clear()
-//            } else if (lines[i].length < maxLength) chars.clear()
+//            }
 //        }
 //    }
 //    outputStream.write(maxWord.toString())
 //    outputStream.close()
-}
-
+//}
 
 /**
  * Сложная (22 балла)
