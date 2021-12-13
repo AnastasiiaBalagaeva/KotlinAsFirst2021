@@ -89,13 +89,10 @@ fun dateStrToDigit(str: String): String = TODO()
  * входными данными.
  */
 fun dateDigitToStr(digital: String): String {
-    if (digital.contains(Regex("""[a-z]""")))
-        return ""
-    val date = digital.split(".")
-    if ((date.size != 3) || (date[0].toInt() > 31) || (date[0].toInt() < 1) || (date[2].toInt() < 1) ||
-        (date[1].toInt() > 12) || (date[1].toInt() < 1))
-        return ""
     try {
+        val date = digital.split(".")
+        if ((date.size != 3) || (date[0].toInt() > 31) || (date[0].toInt() < 1) || (date[2].toInt() < 1) ||
+            (date[1].toInt() > 12) || (date[1].toInt() < 1)) return ""
         val day = date[0].toInt()
         val month = date[1].toInt()
         val year = date[2].toInt()
